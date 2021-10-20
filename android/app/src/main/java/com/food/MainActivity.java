@@ -1,4 +1,4 @@
-package com.food;
+package com.mealmonkey.react;
 
 import com.facebook.react.ReactActivity;
 

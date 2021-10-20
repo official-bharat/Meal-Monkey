@@ -1,4 +1,4 @@
-package com.food;
+package com.mealmonkey.react;
 
 import android.app.Application;
 import android.content.Context;
