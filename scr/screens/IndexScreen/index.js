@@ -31,7 +31,7 @@ function NotificationScreen() {
         </Text>
         <TouchableOpacity>
           <Image
-            source={require('../../assets/icons/cardt.png')}
+            source={require('../../assets/icons/s1.png')}
             style={{
               width: wp(6),
               height: hp(3),

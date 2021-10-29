@@ -1,14 +1,68 @@
 import React, {useState} from 'react';
-import {View, Image, TouchableOpacity} from 'react-native';
+import {View, Image, TouchableOpacity, Alert} from 'react-native';
 import {Text, TextInput, Button} from 'react-native-paper';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import {useNavigation} from '@react-navigation/core';
+import ImagePicker from 'react-native-image-crop-picker';
+
 const ProfileScreen = () => {
   const [text, setText] = React.useState('');
   const {navigate} = useNavigation();
+  const [image, setImage] = useState('');
+  const choosePhoto = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+      includeBase64: true,
+      cropperCircleOverlay: true,
+    }).then(v => {
+      console.log(v);
+      setImage(v);
+    });
+  };
+
+  const choosePhotoFromCamera = () => {
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      includeBase64: true,
+      useFrontCamera: true,
+      cropping: true,
+    }).then(v => {
+      console.log(v);
+      setImage(v);
+    });
+  };
+
+  const selectOption = () => {
+    Alert.alert(
+      'Meal-Monkey',
+      'Choose your Suitable Option',
+      [
+        {
+          text: 'Camera',
+          onPress: () => {
+            choosePhotoFromCamera();
+          },
+        },
+        {
+          text: 'Gallery',
+          onPress: () => {
+            choosePhoto();
+          },
+        },
+        {
+          text: 'Cancel',
+          style: 'destructive',
+        },
+      ],
+      {cancelable: true},
+    );
+  };
 
   return (
     <View style={{backgroundColor: '#ffffff', flex: 1, padding: hp(0.5)}}>
@@ -24,7 +78,7 @@ const ProfileScreen = () => {
           Profile
         </Text>
         <Image
-          source={require('../../assets/icons/cardt.png')}
+          source={require('../../assets/icons/s1.png')}
           style={{
             width: wp(6),
             height: hp(3),
@@ -34,28 +88,27 @@ const ProfileScreen = () => {
         />
       </View>
       <Image
-        style={{height: 200, width: 250}}
         source={require('../../assets/icons/profile2.jpg')}
         style={{
           alignSelf: 'center',
           height: hp(15),
-          width: wp(29),
+          width: wp(30),
           borderRadius: 100,
-          marginVertical: hp(-2),
+          marginVertical: hp(-2.5),
         }}
       />
+      <TouchableOpacity onPress={selectOption}>
+        <Image
+          source={require('../../assets/icons/4.png')}
+          style={{
+            alignSelf: 'center',
 
-      <Image
-        style={{height: 200, width: 250}}
-        source={require('../../assets/icons/4.png')}
-        style={{
-          alignSelf: 'center',
-
-          height: hp(3),
-          width: wp(7),
-          marginVertical: hp(-2),
-        }}
-      />
+            height: hp(2.5),
+            width: wp(6),
+            marginTop: hp(-0.2),
+          }}
+        />
+      </TouchableOpacity>
 
       <Text
         style={{
@@ -63,7 +116,7 @@ const ProfileScreen = () => {
           color: '#FC6011',
           fontSize: 10,
           fontFamily: 'Metropolis-Medium',
-          marginTop: hp(4.6),
+          marginTop: hp(2),
         }}>
         Edit Profile
       </Text>

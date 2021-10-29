@@ -8,7 +8,8 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import {useNavigation} from '@react-navigation/core';
-import MapView from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
+import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 
 function SearchScreen() {
   const {navigate} = useNavigation();
@@ -21,6 +22,7 @@ function SearchScreen() {
             style={{width: wp(5), height: hp(2), marginTop: hp(2)}}
           />
         </TouchableOpacity>
+
         <Text
           style={{
             fontSize: 24,
@@ -32,32 +34,77 @@ function SearchScreen() {
           Change Address
         </Text>
       </View>
+      <View style={{marginVertical: hp(3)}}>
+        <MapView
+          style={{height: hp(70), width: wp(100)}}
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}>
+          <Marker
+            coordinate={{
+              latitude: 37.78825,
+              longitude: -122.4324,
+            }}
+          />
+        </MapView>
+      </View>
 
       <View>
-        <TextInput
+        <GooglePlacesAutocomplete
+          // ref={ref}
           placeholder="Search Address"
-          placeholderTextColor="#B6B7B7"
-          backgroundColor="#F2F2F2"
-          underlineColor="#ffffff"
-          borderRadius={30}
-          theme={{roundness: 28}}
-          style={{
-            margin: hp(1),
-            marginHorizontal: wp(4),
-            fontSize: 14,
-            height: hp(7),
-            borderRadius: 30,
-            backgroundColor: '#F2F2F2',
-            paddingLeft: 35,
+          minLength={1}
+          autoFocus={false}
+          currentLocation={false}
+          enablePoweredByContainer={false}
+          keyboardShouldPersistTaps={'handled'}
+          onPress={(data, details = null) => {
+            // 'details' is provided when fetchDetails = true
+            console.log(data, details);
+          }}
+          styles={{
+            textInputContainer: {
+              alignItems: 'center',
+              marginTop: hp(-1),
+              margin: hp(-5),
+              marginHorizontal: wp(5),
+              borderRadius: 25,
+
+              paddingLeft: wp(8),
+              backgroundColor: '#F2F2F2',
+            },
+            textInput: {
+              color: '#000',
+              fontSize: 14,
+              backgroundColor: 'transparent',
+              paddingVertical: hp(1),
+            },
+            listView: {
+              color: '#8A8E99',
+              fontSize: 14,
+              zIndex: 1000, //To popover the component outwards,
+            },
+            description: {
+              color: '#8A8E99',
+              fontSize: 14,
+              zIndex: 99,
+            },
+          }}
+          query={{
+            key: 'AIzaSyBf4G3qQTDy6-DN6Tb9m6WzgYCW598EoxU',
+            language: 'en',
           }}
         />
         <Image
           source={require('../../assets/icons/search.png')}
           style={{
             width: wp(5),
-            height: hp(2.6),
-            marginTop: hp(-5.6),
-            marginLeft: wp(9),
+            height: hp(2.5),
+            marginTop: hp(1),
+            marginLeft: wp(9.5),
           }}
         />
       </View>
@@ -75,9 +122,9 @@ function SearchScreen() {
           source={require('../../assets/icons/star.png')}
           style={{
             marginTop: hp(1),
-            marginLeft: wp(-6.5),
+            marginLeft: wp(-6.8),
             width: wp(4),
-            height: hp(2.5),
+            height: hp(2),
           }}
         />
         <Text

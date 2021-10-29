@@ -24,7 +24,7 @@ const MenuScreen = () => {
           Menu
         </Text>
         <Image
-          source={require('../../assets/icons/cardt.png')}
+          source={require('../../assets/icons/s1.png')}
           style={{
             width: widthPercentageToDP(6),
             height: heightPercentageToDP(3),
@@ -214,17 +214,15 @@ const MenuScreen = () => {
 
             elevation: 5,
           }}>
-          <TouchableOpacity onPress={() => navigate('Desserts')}>
-            <Text
-              style={{
-                textAlign: 'center',
-                paddingTop: heightPercentageToDP(2),
-                fontFamily: 'EtihadAltis-Bold',
-                fontSize: 22,
-              }}>
-              Desserts
-            </Text>
-          </TouchableOpacity>
+          <Text
+            style={{
+              textAlign: 'center',
+              paddingTop: heightPercentageToDP(2),
+              fontFamily: 'EtihadAltis-Bold',
+              fontSize: 22,
+            }}>
+            Desserts
+          </Text>
 
           <Text
             style={{

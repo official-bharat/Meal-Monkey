@@ -18,7 +18,7 @@ function ChickenScreen() {
           style={{width: wp(100), height: hp(30)}}
         />
         <Image
-          source={require('../../assets/icons/cardWhite2.png')}
+          source={require('../../assets/icons/s2.png')}
           style={{
             marginVertical: hp(-28),
             marginLeft: wp(86),
@@ -286,7 +286,7 @@ function ChickenScreen() {
                 elevation: 3,
               }}>
               <Image
-                source={require('../../assets/icons/cardO2.png')}
+                source={require('../../assets/icons/s3.png')}
                 style={{height: hp(3), width: wp(6)}}
               />
             </View>

@@ -172,7 +172,6 @@ function PaymentScreen() {
         <View style={{marginLeft: wp(24), paddingTop: hp(0.5)}}>
           <Checkbox
             color="#FC6011"
-            borderRadius={25}
             status={check ? 'checked' : 'unchecked'}
             onPress={() => {
               setCheck(!check);

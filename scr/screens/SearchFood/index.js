@@ -188,7 +188,7 @@ function SearchFood() {
           Good morning Akila!
         </Text>
         <Image
-          source={require('../../assets/icons/cardt.png')}
+          source={require('../../assets/icons/s1.png')}
           style={{
             width: widthPercentageToDP(6),
             height: heightPercentageToDP(3),
@@ -251,8 +251,8 @@ function SearchFood() {
         <Image
           source={require('../../assets/icons/search.png')}
           style={{
-            width: widthPercentageToDP(5),
-            height: heightPercentageToDP(2.6),
+            width: widthPercentageToDP(5.2),
+            height: heightPercentageToDP(2.7),
             marginTop: heightPercentageToDP(-5.6),
             marginLeft: widthPercentageToDP(9),
           }}
